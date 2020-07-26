@@ -1,6 +1,15 @@
-{
+﻿{
   "defaultlang": "Es",
   "KeyToEnter": "0xD9D0E1C0",
+  "CloseDoors": true,
+
+  "Doors": [
+    //SAINT DENIS
+    [ 2685.7612304688, -1359.5030517578, 47.215068817139, 130.31652832031 ],
+    [ 2686.4736328125, -1360.3505859375, 47.215072631836, 130.13496398926 ],
+    [ 2689.6804199219, -1364.1772460938, 47.215209960938, 129.9937286377 ],
+    [ 2688.9660644531, -1363.3248291016, 47.215187072754, 129.9937286377 ]
+  ],
 
   "Cinemas": [
     {
@@ -8,7 +17,45 @@
       "NPCModel": "A_F_M_ARMTOWNFOLK_01",
       "BlipIcon": 587827268,
       "EnterCinema": [ 2685.92, -1362.85, 48.21, 2.0 ],
-      "NPCCinema": [ 2686.83, -1362.12, 48.21, 136.17 ]
+      "NPCCinema": [ 2686.83, -1362.12, 48.21, 136.17 ],
+      "CinemaScreen": {
+        "Coords": [ 2702.49, -1348.78, 49.61 ],
+        "Rotation": [ 0, 0, 130.1 ]
+      },
+      "Listings": [
+        {
+          "Name": "El oso",
+          "MovieID": "PL_MLAN_BEAR",
+          "HourOfDay": 21,
+          "MinuteOfDay": 3,
+          "MinutesToClose": 5,
+          "Announce": true
+        },
+        {
+          "Name": "Historia de fantasmas",
+          "MovieID": "PL_MLAN_GHOST_STORY",
+          "HourOfDay": 14,
+          "MinuteOfDay": 0,
+          "MinutesToClose": 5,
+          "Announce": true
+        },
+        {
+          "Name": "Medicina moderna",
+          "MovieID": "PL_TOON_MODERN_MEDICINE",
+          "HourOfDay": 16,
+          "MinuteOfDay": 0,
+          "MinutesToClose": 5,
+          "Announce": true
+        },
+        {
+          "Name": "Los secretos del vuelo",
+          "MovieID": "PL_MLAN_SECRET_OF_MANFLIGHT",
+          "HourOfDay": 18,
+          "MinuteOfDay": 0,
+          "MinutesToClose": 5,
+          "Announce": true
+        }
+      ]
     }
   ]
 }

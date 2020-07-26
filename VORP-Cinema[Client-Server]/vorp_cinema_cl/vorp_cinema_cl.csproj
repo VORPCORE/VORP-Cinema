@@ -51,6 +51,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ClearCaches.cs" />
+    <Compile Include="Functions\Functions.cs" />
     <Compile Include="GetConfig.cs" />
     <Compile Include="vorp_cinema_init.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

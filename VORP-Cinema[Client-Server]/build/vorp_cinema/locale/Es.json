@@ -1,3 +1,4 @@
 {
-  "PressToAccess": "Pulsa [~e~Espacio~q~] para acceder al cine"
+  "PressToAccess": "Pulsa [~e~Espacio~q~] para acceder al cine",
+  "AnnounceMovie": "{0}: ¡La película {1} va a comenzar!"
 }
