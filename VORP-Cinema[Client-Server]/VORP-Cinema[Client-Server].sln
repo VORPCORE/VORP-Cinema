@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30309.148
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "vorp_cinema_cl", "vorp_cinema_cl\vorp_cinema_cl.csproj", "{95AB961B-06D5-4C9F-9C46-88C187FBFF63}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "vorp_cinema_sv", "vorp_cinema_sv\vorp_cinema_sv.csproj", "{82549CBC-1E0C-4F7D-AB23-0BA068874DD0}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{95AB961B-06D5-4C9F-9C46-88C187FBFF63}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{95AB961B-06D5-4C9F-9C46-88C187FBFF63}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{95AB961B-06D5-4C9F-9C46-88C187FBFF63}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{95AB961B-06D5-4C9F-9C46-88C187FBFF63}.Release|Any CPU.Build.0 = Release|Any CPU
+		{82549CBC-1E0C-4F7D-AB23-0BA068874DD0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{82549CBC-1E0C-4F7D-AB23-0BA068874DD0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{82549CBC-1E0C-4F7D-AB23-0BA068874DD0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{82549CBC-1E0C-4F7D-AB23-0BA068874DD0}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {A7D6BF13-6A57-4BE9-A56E-CAAA103B1367}
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,14 @@
+{
+  "defaultlang": "Es",
+  "KeyToEnter": "0xD9D0E1C0",
+
+  "Cinemas": [
+    {
+      "Name": "Cine de Saint Denis",
+      "NPCModel": "A_F_M_ARMTOWNFOLK_01",
+      "BlipIcon": 587827268,
+      "EnterCinema": [ 2685.92, -1362.85, 48.21, 2.0 ],
+      "NPCCinema": [ 2686.83, -1362.12, 48.21, 136.17 ]
+    }
+  ]
+}
