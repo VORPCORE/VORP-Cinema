@@ -97,6 +97,7 @@ namespace vorp_cinema_cl
         [Tick]
         private async Task onCinema()
         {
+            if (!GetConfig.configLoaded) return;
             if (CinemaPeds.Count() == 0) return;
 
             int pid = API.PlayerPedId();
