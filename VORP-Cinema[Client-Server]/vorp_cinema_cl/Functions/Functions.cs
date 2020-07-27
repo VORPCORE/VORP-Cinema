@@ -14,12 +14,6 @@ namespace vorp_cinema_cl.Functions
         public Functions()
         {
             Tick += isTimeCinema;
-            API.RegisterCommand("cine", new Action<int, List<object>, string>((source, args, raw) =>
-            {
-                playing = false;
-                API.SetTvChannel(-1);
-                Function.Call((Hash)0xE550CDE128D56757, 0);
-            }), false);
         }
 
         [Tick]
@@ -45,8 +39,10 @@ namespace vorp_cinema_cl.Functions
                     if (now.Hour == movieTime.Hour && now.Minute == movieTime.Minute && !vorp_cinema_init.CinemaTime[i])
                     {
                         vorp_cinema_init.CinemaTime[i] = true;
-                        TriggerEvent("vorp:Tip", string.Format(GetConfig.Langs["AnnounceMovie"], cineName, movieName, closeMinutes), 5000);
-                        StartMovie(i, movieId);
+                        if (GetConfig.Config["Cinemas"][i]["Listings"][c]["Announce"].ToObject<bool>())
+                        {
+                            TriggerEvent("vorp:Tip", string.Format(GetConfig.Langs["AnnounceMovie"], cineName, movieName, closeMinutes), 5000);
+                        }
                     }
 
                     movieTime = movieTime.AddMinutes(GetConfig.Config["Cinemas"][i]["Listings"][c]["MinutesToClose"].ToObject<int>());
@@ -54,6 +50,7 @@ namespace vorp_cinema_cl.Functions
                     if (now.Hour == movieTime.Hour && now.Minute == movieTime.Minute && vorp_cinema_init.CinemaTime[i])
                     {
                         vorp_cinema_init.CinemaTime[i] = false;
+                        StartMovie(i, movieId);
                     }
                 }
             }
@@ -65,7 +62,6 @@ namespace vorp_cinema_cl.Functions
             Function.Call((Hash)0xC6ED9D5092438D91, 0);
             Function.Call((Hash)0x593FAF7FC9401A56, -1);
             Function.Call((Hash)0x593FAF7FC9401A56, 2);
-            Function.Call((Hash)0x6FC9B065229C0787, true);
             playing = true;
             InputMovie(cine, handle);
             int channel_input = 2;

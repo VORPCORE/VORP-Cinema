@@ -136,6 +136,7 @@ namespace vorp_cinema_cl
                                 await Delay(1000);
                                 API.DoScreenFadeIn(1000);
                                 TriggerEvent("vorp:Tip", string.Format(GetConfig.Langs["Welcome"], cinemaName), 4000);
+                                Function.Call((Hash)0x6FC9B065229C0787, true);
                             }
                             else
                             {
@@ -159,6 +160,7 @@ namespace vorp_cinema_cl
                         await Delay(600);
                         API.DoScreenFadeIn(1500);
                         API.TaskGoToCoordAnyMeans(pid, animCoordX, animCoordY, animCoordZ, 0.5f, 0, false, 524419, -1f);
+                        Function.Call((Hash)0x6FC9B065229C0787, true);
                         await Delay(5000);
                     }
                 }
