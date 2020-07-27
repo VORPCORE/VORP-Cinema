@@ -29,6 +29,12 @@ namespace vorp_cinema_cl
                 int _ped = npc;
                 DeletePed(ref _ped);
             }
+
+            foreach (int screen in vorp_cinema_init.CinemaScreens)
+            {
+                int _screen = screen;
+                DeleteObject(ref _screen);
+            }
         }
     }
 }

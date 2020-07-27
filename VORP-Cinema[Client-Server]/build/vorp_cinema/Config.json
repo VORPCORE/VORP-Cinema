@@ -1,6 +1,6 @@
-{
+﻿{
   "defaultlang": "Es",
-  "KeyToEnter": "0xD9D0E1C0",
+  "KeyToEnter": "0xC7B5340A",
   "CloseDoors": true,
 
   "Doors": [
@@ -17,20 +17,28 @@
       "NPCModel": "A_F_M_ARMTOWNFOLK_01",
       "BlipIcon": 587827268,
       "EnterCinema": [ 2685.92, -1362.85, 48.21, 2.0 ],
+      "ExitCinema": [ 2688.38, -1360.57, 48.22, 2.0 ],
+      "AnimationCoord": [ 2683.33, -1364.82, 47.5 ],
       "NPCCinema": [ 2686.83, -1362.12, 48.21, 136.17 ],
+      "CinemaScreen": {
+        "Coords": [ 2702.49, -1348.78, 49.61 ],
+        "Rotation": [ 0.0, 0.0, 130.1 ]
+      },
       "Listings": [
         {
           "Name": "El oso",
           "MovieID": "PL_MLAN_BEAR",
-          "HourOfDay": 21,
-          "MinuteOfDay": 3,
+          "HourOfDay": 20,
+          "MinuteOfDay": 0,
+          "MinutesToClose": 5,
           "Announce": true
         },
         {
           "Name": "Historia de fantasmas",
           "MovieID": "PL_MLAN_GHOST_STORY",
-          "HourOfDay": 14,
-          "MinuteOfDay": 0,
+          "HourOfDay": 0,
+          "MinuteOfDay": 27,
+          "MinutesToClose": 5,
           "Announce": true
         },
         {
@@ -38,6 +46,7 @@
           "MovieID": "PL_TOON_MODERN_MEDICINE",
           "HourOfDay": 16,
           "MinuteOfDay": 0,
+          "MinutesToClose": 5,
           "Announce": true
         },
         {
@@ -45,6 +54,7 @@
           "MovieID": "PL_MLAN_SECRET_OF_MANFLIGHT",
           "HourOfDay": 18,
           "MinuteOfDay": 0,
+          "MinutesToClose": 5,
           "Announce": true
         }
       ]

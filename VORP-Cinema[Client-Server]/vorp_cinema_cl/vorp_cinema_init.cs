@@ -39,6 +39,20 @@ namespace vorp_cinema_cl
                 float Pedy = cinema["NPCCinema"][1].ToObject<float>();
                 float Pedz = cinema["NPCCinema"][2].ToObject<float>();
                 float Pedh = cinema["NPCCinema"][3].ToObject<float>();
+                float cinemaX = cinema["CinemaScreen"]["Coords"][0].ToObject<float>();
+                float cinemaY = cinema["CinemaScreen"]["Coords"][1].ToObject<float>();
+                float cinemaZ = cinema["CinemaScreen"]["Coords"][2].ToObject<float>();
+                float cinemaRX = cinema["CinemaScreen"]["Rotation"][0].ToObject<float>();
+                float cinemaRY = cinema["CinemaScreen"]["Rotation"][1].ToObject<float>();
+                float cinemaRZ = cinema["CinemaScreen"]["Rotation"][2].ToObject<float>();
+
+                int _object = API.CreateObjectNoOffset(unchecked((uint)(-349278483)), cinemaX, cinemaY, cinemaZ, false, true, false, true);
+                API.SetEntityRotation(_object, cinemaRX, cinemaRY, cinemaRZ, 2, true);
+                API.SetEntityVisible(_object, true);
+                API.SetEntityDynamic(_object, true);
+                API.SetEntityProofs(_object, 31, true);
+                API.FreezeEntityPosition(_object, true);
+                CinemaScreens.Add(_object);
 
                 int _blip = Function.Call<int>((Hash)0x554D9D53F696D002, 1664425300, x, y, z);
                 Function.Call((Hash)0x74F74D3207ED525C, _blip, blipIcon, 1);
@@ -90,17 +104,39 @@ namespace vorp_cinema_cl
 
             for (int i = 0; i < GetConfig.Config["Cinemas"].Count(); i++)
             {
-                float x = GetConfig.Config["Cinemas"][i]["EnterCinema"][0].ToObject<float>();
-                float y = GetConfig.Config["Cinemas"][i]["EnterCinema"][1].ToObject<float>();
-                float z = GetConfig.Config["Cinemas"][i]["EnterCinema"][2].ToObject<float>();
-                float radius = GetConfig.Config["Cinemas"][i]["EnterCinema"][3].ToObject<float>();
+                float xEnter = GetConfig.Config["Cinemas"][i]["EnterCinema"][0].ToObject<float>();
+                float yEnter = GetConfig.Config["Cinemas"][i]["EnterCinema"][1].ToObject<float>();
+                float zEnter = GetConfig.Config["Cinemas"][i]["EnterCinema"][2].ToObject<float>();
+                float radiusEnter = GetConfig.Config["Cinemas"][i]["EnterCinema"][3].ToObject<float>();
+                float xExit = GetConfig.Config["Cinemas"][i]["ExitCinema"][0].ToObject<float>();
+                float yExit = GetConfig.Config["Cinemas"][i]["ExitCinema"][1].ToObject<float>();
+                float zExit = GetConfig.Config["Cinemas"][i]["ExitCinema"][2].ToObject<float>();
+                float radiusExit = GetConfig.Config["Cinemas"][i]["ExitCinema"][3].ToObject<float>();
+                float animCoordX = GetConfig.Config["Cinemas"][i]["AnimationCoord"][0].ToObject<float>();
+                float animCoordY = GetConfig.Config["Cinemas"][i]["AnimationCoord"][1].ToObject<float>();
+                float animCoordZ = GetConfig.Config["Cinemas"][i]["AnimationCoord"][2].ToObject<float>();
 
-                if (API.GetDistanceBetweenCoords(pCoords.X, pCoords.Y, pCoords.Z, x, y, z, true) <= radius && CinemaTime[i])
+                if (API.GetDistanceBetweenCoords(pCoords.X, pCoords.Y, pCoords.Z, xEnter, yEnter, zEnter, true) <= radiusEnter && CinemaTime[i])
                 {
                     await DrawTxt(GetConfig.Langs["PressToAccess"], 0.5f, 0.9f, 0.7f, 0.7f, 255, 255, 255, 255, true, true);
                     if (API.IsControlJustPressed(0, KeyToEnter))
                     {
                         Debug.WriteLine("Funciona");
+                        await Delay(5000);
+                    }
+                }
+                if (API.GetDistanceBetweenCoords(pCoords.X, pCoords.Y, pCoords.Z, xExit, yExit, zExit, true) <= radiusExit)
+                {
+                    await DrawTxt(GetConfig.Langs["PressToExit"], 0.5f, 0.9f, 0.7f, 0.7f, 255, 255, 255, 255, true, true);
+                    if (API.IsControlJustPressed(0, KeyToEnter))
+                    {
+                        Debug.WriteLine("Funciona");
+                        API.DoScreenFadeOut(800);
+                        await Delay(1000);
+                        API.SetEntityCoords(pid, xEnter, yEnter, zEnter, false, false, false, false);
+                        await Delay(100);
+                        API.DoScreenFadeIn(1000);
+                        API.TaskGoToCoordAnyMeans(pid, animCoordX, animCoordY, animCoordZ, 0.5f, 0, false, 524419, -1f);
                         await Delay(5000);
                     }
                 }
