@@ -40,11 +40,12 @@ namespace vorp_cinema_cl.Functions
                     string movieName = GetConfig.Config["Cinemas"][i]["Listings"][c]["Name"].ToString();
                     string movieId = GetConfig.Config["Cinemas"][i]["Listings"][c]["MovieID"].ToString();
                     DateTime movieTime = new DateTime(now.Year, now.Month, now.Day, CineHour, CineMinute, 0);
+                    string closeMinutes = GetConfig.Config["Cinemas"][i]["Listings"][c]["MinutesToClose"].ToString();
 
                     if (now.Hour == movieTime.Hour && now.Minute == movieTime.Minute && !vorp_cinema_init.CinemaTime[i])
                     {
                         vorp_cinema_init.CinemaTime[i] = true;
-                        TriggerEvent("vorp:Tip", string.Format(GetConfig.Langs["AnnounceMovie"], cineName, movieName), 5000);
+                        TriggerEvent("vorp:Tip", string.Format(GetConfig.Langs["AnnounceMovie"], cineName, movieName, closeMinutes), 5000);
                         StartMovie(i, movieId);
                     }
 
@@ -84,7 +85,7 @@ namespace vorp_cinema_cl.Functions
                 Function.Call((Hash)0xCFCC78391C8B3814, 4);
                 Function.Call((Hash)0x906B86E6D7896B9E, true);
                 Function.Call((Hash)0xC0A145540254A840, 0.5f, 0.5f, 1.1f, 1.1f, 0.0f, 255, 255, 255, 50);
-                Function.Call((Hash)0xE550CDE128D56757, Function.Call<int>((Hash)0xB6762A85EE29AA60, "bla_theater"));
+                Function.Call((Hash)0xE550CDE128D56757, Function.Call<int>((Hash)0x66F35DD9D2B58579));
                 Function.Call((Hash)0x906B86E6D7896B9E, false);
                 await Delay(0);
             }

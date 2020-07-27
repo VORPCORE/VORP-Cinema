@@ -115,13 +115,33 @@ namespace vorp_cinema_cl
                 float animCoordX = GetConfig.Config["Cinemas"][i]["AnimationCoord"][0].ToObject<float>();
                 float animCoordY = GetConfig.Config["Cinemas"][i]["AnimationCoord"][1].ToObject<float>();
                 float animCoordZ = GetConfig.Config["Cinemas"][i]["AnimationCoord"][2].ToObject<float>();
+                string price = GetConfig.Config["Cinemas"][i]["Price"].ToString();
+                string cinemaName = GetConfig.Config["Cinemas"][i]["Name"].ToString();
+                float cinemaX = GetConfig.Config["Cinemas"][i]["CinemaScreen"]["Coords"][0].ToObject<float>();
+                float cinemaY = GetConfig.Config["Cinemas"][i]["CinemaScreen"]["Coords"][1].ToObject<float>();
+                float cinemaZ = GetConfig.Config["Cinemas"][i]["CinemaScreen"]["Coords"][2].ToObject<float>();
 
                 if (API.GetDistanceBetweenCoords(pCoords.X, pCoords.Y, pCoords.Z, xEnter, yEnter, zEnter, true) <= radiusEnter && CinemaTime[i])
                 {
                     await DrawTxt(GetConfig.Langs["PressToAccess"], 0.5f, 0.9f, 0.7f, 0.7f, 255, 255, 255, 255, true, true);
                     if (API.IsControlJustPressed(0, KeyToEnter))
                     {
-                        Debug.WriteLine("Funciona");
+                        TriggerEvent("vorp:ExecuteServerCallBack", "getMoneyCinema", new Action<bool>(async (haveMoney) =>
+                        {
+                            if (haveMoney)
+                            {
+                                API.DoScreenFadeOut(800);
+                                await Delay(500);
+                                API.SetEntityCoords(pid, xExit, yExit, zExit, false, false, false, false);
+                                await Delay(1000);
+                                API.DoScreenFadeIn(1000);
+                                TriggerEvent("vorp:Tip", string.Format(GetConfig.Langs["Welcome"], cinemaName), 4000);
+                            }
+                            else
+                            {
+                                TriggerEvent("vorp:Tip", string.Format(GetConfig.Langs["NoMoney"], price), 4000);
+                            }
+                        }), i);
                         await Delay(5000);
                     }
                 }
@@ -130,12 +150,14 @@ namespace vorp_cinema_cl
                     await DrawTxt(GetConfig.Langs["PressToExit"], 0.5f, 0.9f, 0.7f, 0.7f, 255, 255, 255, 255, true, true);
                     if (API.IsControlJustPressed(0, KeyToEnter))
                     {
-                        Debug.WriteLine("Funciona");
+                        Functions.Functions.playing = false;
+                        API.SetTvChannel(-1);
+                        Function.Call((Hash)0xE550CDE128D56757, 0);
                         API.DoScreenFadeOut(800);
                         await Delay(1000);
                         API.SetEntityCoords(pid, xEnter, yEnter, zEnter, false, false, false, false);
-                        await Delay(100);
-                        API.DoScreenFadeIn(1000);
+                        await Delay(600);
+                        API.DoScreenFadeIn(1500);
                         API.TaskGoToCoordAnyMeans(pid, animCoordX, animCoordY, animCoordZ, 0.5f, 0, false, 524419, -1f);
                         await Delay(5000);
                     }
