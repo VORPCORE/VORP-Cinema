@@ -94,7 +94,6 @@ namespace vorp_cinema_cl
             }
         }
 
-        [Tick]
         private async Task onCinema()
         {
             if (!GetConfig.configLoaded) return;
@@ -171,7 +170,6 @@ namespace vorp_cinema_cl
             }
         }
 
-        [Tick]
         private async Task doorCinema()
         {
             await Delay(50);

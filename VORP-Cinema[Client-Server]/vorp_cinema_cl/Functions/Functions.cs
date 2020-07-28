@@ -16,7 +16,6 @@ namespace vorp_cinema_cl.Functions
             Tick += isTimeCinema;
         }
 
-        [Tick]
         private async Task isTimeCinema()
         {
             await Delay(100);
