@@ -32,32 +32,32 @@
         {
           "Name": "El oso",
           "MovieID": "PL_MLAN_BEAR",
-          "HourOfDay": 20,
-          "MinuteOfDay": 0,
+          "HourOfDay": 20, //MIN IS 0, MAX IS 23
+          "MinuteOfDay": 0, //MIN IS 0, MAX IS 59
           "MinutesToClose": 5,
           "Announce": true
         },
         {
           "Name": "Historia de fantasmas",
           "MovieID": "PL_MLAN_GHOST_STORY",
-          "HourOfDay": 14,
-          "MinuteOfDay": 0,
+          "HourOfDay": 14, //MIN IS 0, MAX IS 23
+          "MinuteOfDay": 0, //MIN IS 0, MAX IS 59
           "MinutesToClose": 5,
           "Announce": true
         },
         {
           "Name": "Medicina moderna",
           "MovieID": "PL_TOON_MODERN_MEDICINE",
-          "HourOfDay": 16,
-          "MinuteOfDay": 0,
+          "HourOfDay": 16, //MIN IS 0, MAX IS 23
+          "MinuteOfDay": 0, //MIN IS 0, MAX IS 59
           "MinutesToClose": 5,
           "Announce": true
         },
         {
           "Name": "Los secretos del vuelo",
           "MovieID": "PL_MLAN_SECRET_OF_MANFLIGHT",
-          "HourOfDay": 18,
-          "MinuteOfDay": 0,
+          "HourOfDay": 18, //MIN IS 0, MAX IS 23
+          "MinuteOfDay": 0, //MIN IS 0, MAX IS 59
           "MinutesToClose": 5,
           "Announce": true
         }
@@ -80,32 +80,32 @@
         {
           "Name": "Salvadores y salvajes",
           "MovieID": "PL_MLAN_SAVIORS_AND_SAVAGES",
-          "HourOfDay": 4,
-          "MinuteOfDay": 39,
+          "HourOfDay": 4, //MIN IS 0, MAX IS 23
+          "MinuteOfDay": 39, //MIN IS 0, MAX IS 59
           "MinutesToClose": 5,
           "Announce": true
         },
         {
           "Name": "Dirección Damnation",
           "MovieID": "PL_TOON_DIRECT_CURRENT_DAMNATION",
-          "HourOfDay": 14,
-          "MinuteOfDay": 0,
+          "HourOfDay": 14, //MIN IS 0, MAX IS 23
+          "MinuteOfDay": 0, //MIN IS 0, MAX IS 59
           "MinutesToClose": 5,
           "Announce": true
         },
         {
           "Name": "Josiah, Blackwater",
           "MovieID": "PL_MLAN_JOSIAH_BLACKWATER",
-          "HourOfDay": 16,
-          "MinuteOfDay": 0,
+          "HourOfDay": 16, //MIN IS 0, MAX IS 23
+          "MinuteOfDay": 0, //MIN IS 0, MAX IS 59
           "MinutesToClose": 5,
           "Announce": true
         },
         {
           "Name": "La hija del granjero",
           "MovieID": "PL_TOON_FARMERS_DAUGHTER",
-          "HourOfDay": 18,
-          "MinuteOfDay": 0,
+          "HourOfDay": 18, //MIN IS 0, MAX IS 23
+          "MinuteOfDay": 0, //MIN IS 0, MAX IS 59
           "MinutesToClose": 5,
           "Announce": true
         }
