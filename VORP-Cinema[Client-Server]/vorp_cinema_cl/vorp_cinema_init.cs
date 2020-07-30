@@ -16,6 +16,7 @@ namespace vorp_cinema_cl
         public static Dictionary<int, int> Doorlist = new Dictionary<int, int>();
         public static Dictionary<int, bool> CinemaTime = new Dictionary<int, bool>();
         public static uint KeyToEnter = 0;
+        public static bool IsInCinema = false;
         public vorp_cinema_init()
         {
             Tick += onCinema;
@@ -138,7 +139,7 @@ namespace vorp_cinema_cl
                                     await Delay(1000);
                                     API.DoScreenFadeIn(1000);
                                     TriggerEvent("vorp:Tip", string.Format(GetConfig.Langs["Welcome"], cinemaName), 4000);
-                                    Function.Call((Hash)0x6FC9B065229C0787, true);
+                                    IsInCinema = true;
                                 }
                                 else
                                 {
@@ -163,7 +164,8 @@ namespace vorp_cinema_cl
                         await Delay(600);
                         API.DoScreenFadeIn(1500);
                         API.TaskGoToCoordAnyMeans(pid, animCoordX, animCoordY, animCoordZ, 0.5f, 0, false, 524419, -1f);
-                        Function.Call((Hash)0x6FC9B065229C0787, true);
+                        Function.Call((Hash)0x6FC9B065229C0787, false);
+                        IsInCinema = false;
                         await Delay(5000);
                     }
                 }

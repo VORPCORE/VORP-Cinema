@@ -35,22 +35,25 @@ namespace vorp_cinema_cl.Functions
                     DateTime movieTime = new DateTime(now.Year, now.Month, now.Day, CineHour, CineMinute, 0);
                     string closeMinutes = GetConfig.Config["Cinemas"][i]["Listings"][c]["MinutesToClose"].ToString();
 
-                    if (now.Hour == movieTime.Hour && now.Minute == movieTime.Minute && !vorp_cinema_init.CinemaTime[i])
+                    if (movieTime.Hour <= 23 && movieTime.Hour >= 0 && movieTime.Minute <= 59 && movieTime.Minute >= 0)
                     {
-                        vorp_cinema_init.CinemaTime[i] = true;
-                        if (GetConfig.Config["Cinemas"][i]["Listings"][c]["Announce"].ToObject<bool>())
+                        if (now.Hour == movieTime.Hour && now.Minute == movieTime.Minute && !vorp_cinema_init.CinemaTime[i])
                         {
-                            TriggerEvent("vorp:Tip", string.Format(GetConfig.Langs["AnnounceMovie"], cineName, movieName, closeMinutes), 5000);
+                            vorp_cinema_init.CinemaTime[i] = true;
+                            if (GetConfig.Config["Cinemas"][i]["Listings"][c]["Announce"].ToObject<bool>())
+                            {
+                                TriggerEvent("vorp:Tip", string.Format(GetConfig.Langs["AnnounceMovie"], cineName, movieName, closeMinutes), 5000);
+                            }
                         }
-                    }
 
-                    movieTime = movieTime.AddMinutes(GetConfig.Config["Cinemas"][i]["Listings"][c]["MinutesToClose"].ToObject<int>());
+                        movieTime = movieTime.AddMinutes(GetConfig.Config["Cinemas"][i]["Listings"][c]["MinutesToClose"].ToObject<int>());
 
-                    if (now.Hour == movieTime.Hour && now.Minute == movieTime.Minute && vorp_cinema_init.CinemaTime[i])
-                    {
-                        vorp_cinema_init.CinemaTime[i] = false;
-                        StartMovie(i, movieId);
-                    }
+                        if (now.Hour == movieTime.Hour && now.Minute == movieTime.Minute && vorp_cinema_init.CinemaTime[i])
+                        {
+                            vorp_cinema_init.CinemaTime[i] = false;
+                            StartMovie(i, movieId);
+                        }
+                    }    
                 }
             }
         }
@@ -59,8 +62,6 @@ namespace vorp_cinema_cl.Functions
         {
             int handle = CreateNamedRenderTargetForModel("bla_theater", -349278483);
             Function.Call((Hash)0xC6ED9D5092438D91, 0);
-            Function.Call((Hash)0x593FAF7FC9401A56, -1);
-            Function.Call((Hash)0x593FAF7FC9401A56, 2);
             playing = true;
             InputMovie(cine, handle);
             int channel_input = 2;
@@ -82,6 +83,14 @@ namespace vorp_cinema_cl.Functions
                 Function.Call((Hash)0xC0A145540254A840, 0.5f, 0.5f, 1.1f, 1.1f, 0.0f, 255, 255, 255, 50);
                 Function.Call((Hash)0xE550CDE128D56757, Function.Call<int>((Hash)0x66F35DD9D2B58579));
                 Function.Call((Hash)0x906B86E6D7896B9E, false);
+                if (vorp_cinema_init.IsInCinema)
+                {
+                    Function.Call((Hash)0x6FC9B065229C0787, true);
+                }
+                else
+                {
+                    Function.Call((Hash)0x6FC9B065229C0787, false);
+                }
                 await Delay(0);
             }
         }
